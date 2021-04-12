@@ -1,21 +1,21 @@
 import 'package:flutter/foundation.dart';
-import '../constant/todo_status.dart';
 
 class TodoItem {
-  final String name;
-  final String description;
-  final TodoStatus status;
+  String name;
+  bool isCompleted;
+  DateTime createdAt;
+  static int idCounter = 0;
+  final int id = idCounter++;
 
   TodoItem({
     @required this.name,
-     this.description,
-    this.status
+    this.isCompleted = false,
+    @required this.createdAt,
   });
 
-  TodoItem copyWith({String name, String description}) {
-    return TodoItem(
-      name: name ?? this.name,
-      description: description ?? this.description,
-    );
+  @override
+  String toString() {
+    // TODO: implement toString
+    return '${this.id}: ${this.name}, ${this.isCompleted}';
   }
 }

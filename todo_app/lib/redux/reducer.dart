@@ -5,6 +5,6 @@ import 'package:todo_app/redux/todo/todo_reducer.dart';
 AppState appReducer(AppState state, dynamic action) {
   return AppState(
     navState: navReducer(state.navState, action),
-    totoState: todoReducer(state.totoState, action),
+    todoState: todoReducer(state.todoState, action),
   );
 }
