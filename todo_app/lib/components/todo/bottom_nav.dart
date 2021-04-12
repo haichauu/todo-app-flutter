@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
 import 'package:todo_app/model/app_state.dart';
+
+// Redux
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:todo_app/redux/nav/nav_actions.dart';
 import 'package:todo_app/redux/nav/selectors.dart';
+
+
 
 class BottomNav extends StatelessWidget {
 

@@ -1,3 +1,3 @@
-final String todoScreenTitle = 'Todos Screen';
-final String completeTodoScreenTitle = 'Complete Todos Screen';
-final String incompleteScreenTitle = 'Incomplete Todos Screen';
+const String todoScreenTitle = 'Todos Screen';
+const String completeTodoScreenTitle = 'Complete Todos Screen';
+const String incompleteScreenTitle = 'Incomplete Todos Screen';

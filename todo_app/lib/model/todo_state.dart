@@ -3,13 +3,13 @@ import 'package:todo_app/model/todo_item.dart';
 
 @immutable
 class TodoState {
-  final List<TodoItem> totoList;
+  final List<TodoItem> todoList;
 
-  TodoState({@required this.totoList});
+  TodoState({@required this.todoList});
 
   factory TodoState.initial() {
     return TodoState(
-      totoList: []
+      todoList: []
     );
   }
 
@@ -18,7 +18,7 @@ class TodoState {
     List<TodoItem> todoList
   }) {
     return TodoState(
-      totoList: totoList ?? this.totoList
+      todoList: todoList ?? this.todoList
     );
   }
 
@@ -27,9 +27,9 @@ class TodoState {
       identical(this, other) ||
           other is TodoState &&
               runtimeType == other.runtimeType &&
-              totoList == other.totoList;
+              todoList == other.todoList;
 
   @override
   int get hashCode =>
-      totoList.hashCode;
+      todoList.hashCode;
 }

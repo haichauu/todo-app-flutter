@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+
+// Models
+import 'package:todo_app/model/app_state.dart';
+
+// Redux
+import 'package:todo_app/redux/nav/selectors.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:todo_app/model/app_state.dart';
-import 'package:todo_app/redux/nav/selectors.dart';
 
 class HeaderBar extends StatelessWidget with PreferredSizeWidget {
   HeaderBar({Key key}) : super(key: key);

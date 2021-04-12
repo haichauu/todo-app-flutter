@@ -1,4 +1,0 @@
-enum TodoStatus {
-  COMPLETE,
-  INCOMPLETE
-}

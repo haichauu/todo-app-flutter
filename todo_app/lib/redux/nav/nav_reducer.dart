@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:redux/redux.dart';
 import 'package:todo_app/constant/title_app_bar.dart';
 import 'package:todo_app/model/nav_state.dart';
+
+// Redux
 import 'package:todo_app/redux/nav/nav_actions.dart';
+import 'package:redux/redux.dart';
+
+// Screens
 import 'package:todo_app/screens/complete_todos_screen.dart';
 import 'package:todo_app/screens/incomplete_todos_screen.dart';
 import 'package:todo_app/screens/todos_screen.dart';
@@ -27,8 +31,7 @@ NavState navigateToScreen(NavState state, NavigateToScreenAction action) {
   }
 
   return state.copyWith(
-    currentIndex: action.index,
-    currentScreen: currentScreen,
-    currentScreenTitle: currentScreenTitle
-  );
+      currentIndex: action.index,
+      currentScreen: currentScreen,
+      currentScreenTitle: currentScreenTitle);
 }

@@ -5,3 +5,8 @@ class AddTodoItemAction {
   TodoItem todoItem;
   AddTodoItemAction({@required this.todoItem});
 }
+
+class UpdateStatusTodoItemAction {
+  int id;
+  UpdateStatusTodoItemAction({@required this.id});
+}
