@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/components/common/text.dart';
 import 'package:todo_app/model/app_state.dart';
 
 // Redux
@@ -32,15 +33,15 @@ class BottomNav extends StatelessWidget {
     return <BottomNavigationBarItem>[
       BottomNavigationBarItem(
         icon: Icon(Icons.assignment_rounded),
-        title: Text('All'),
+        title: MyText(text: 'All',),
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.assignment_turned_in_rounded),
-        title: Text('Complete'),
+        title: MyText(text: 'Complete'),
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.assignment_late_rounded),
-        title: Text('Incomplete'),
+        title: MyText(text: 'Incomplete'),
       ),
     ];
   }
