@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/theme/styles.dart';
-import 'package:todo_app/utils/format.dart';
-
-// Components
-import 'package:todo_app/components/common/text.dart';
+import 'package:todo_app/components/todo/todo_card.dart';
 
 // Models
 import 'package:todo_app/model/app_state.dart';
@@ -23,45 +19,7 @@ class TodoList extends StatelessWidget {
     return ListView.builder(
         itemCount: todos.length,
         itemBuilder: (context, index) {
-          return Card(
-              margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              color: Colors.white,
-              elevation: 2,
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Checkbox(
-                        value: todos[index].isCompleted == true,
-                        onChanged: (value) {
-                          _viewModel.onUpdateStatusTodoItem(todos[index].id);
-                        }),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          MyText(
-                            text: todos[index].name,
-                            textStyle: TextStyles.descriptionTodoStyles,
-                            textAlign: TextAlign.start,
-                          ),
-                          Container(
-                            child: MyText(
-                              text: MyFormat.formatDateTimeToYMDHMSString(
-                                  todos[index].createdAt),
-                              textStyle: TextStyles.createdTodoDateStyles,
-                            ),
-                            margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ));
+          return TodoCard(todoItem: todos[index], onChangedCheckBox: _viewModel.onUpdateStatusTodoItem);
         });
   }
 

@@ -51,22 +51,28 @@ class FloatButtonState extends State<FloatButton> {
             showModalBottomSheet<void>(
               context: context,
               builder: (BuildContext context) {
-                return Container(
-                  height: 200,
-                  padding: EdgeInsets.all(20),
-                  child: Column(children: [
-                    TextInput(
-                      autoFocus: true,
-                      labelText: 'Enter a task',
-                      onChange: this.onChangeText,
-                    ),
-                    MyTextButton(
-                        btnTxt: 'Add',
-                        onPress: () => onAddTask(context, viewModel))
-                  ]),
+                return SingleChildScrollView(
+                  child: Container(
+                    height: 200,
+                    padding: EdgeInsets.all(20),
+                    child: Column(children: [
+                      TextInput(
+                        autoFocus: true,
+                        labelText: 'Enter a task',
+                        onChange: this.onChangeText,
+                      ),
+                      MyTextButton(
+                          btnTxt: 'Add',
+                          onPress: () => onAddTask(context, viewModel))
+                    ]),
+                  )
                 );
               },
-            );
+            ).whenComplete(() {
+              setState(() {
+                taskDescription = '';
+              });
+            });
           },
           child: const Icon(Icons.add_rounded),
           backgroundColor: Colors.green,
@@ -74,9 +80,6 @@ class FloatButtonState extends State<FloatButton> {
       },
     );
   }
-
-  @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
 
 class _ViewModel {

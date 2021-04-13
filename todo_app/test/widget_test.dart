@@ -5,26 +5,37 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:todo_app/components/todo/todo_card.dart';
+import 'package:todo_app/model/todo_item.dart';
 
-import 'package:todo_app/screens/main_screen.dart';
+import 'package:todo_app/utils/format.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MainScreen());
+  testWidgets(
+      'Todo card has description string, created at string, checkbox widget',
+      (WidgetTester tester) async {
+    TodoItem todoItem =
+        new TodoItem(name: 'Test widget', createdAt: DateTime.now());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    await tester.pumpWidget(Directionality(
+      child: TodoCard(
+        todoItem: todoItem,
+        onChangedCheckBox: () {},
+      ),
+      textDirection: TextDirection.ltr,
+    ));
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    final descriptionFinder = find.text(todoItem.name);
+    final createdAtStringFinder =
+        find.text(MyFormat.formatDateTimeToYMDHMSString(todoItem.createdAt));
+    expect(descriptionFinder, findsOneWidget);
+    expect(createdAtStringFinder, findsOneWidget);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    final checkboxKey =  Key('checkbox_todo_card_${todoItem.id}');
+    expect(find.byKey(checkboxKey), findsOneWidget);
+
   });
 }
